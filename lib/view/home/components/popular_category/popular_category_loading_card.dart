@@ -9,7 +9,7 @@ class PopularCategoryLoadingCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(10, 10, 5, 10),
       child: Material(
-        elevation: 0,
+        elevation: 8,
         shadowColor: Colors.grey.shade300,
         borderRadius: BorderRadius.circular(10),
         child: Shimmer.fromColors(

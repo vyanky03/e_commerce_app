@@ -1,12 +1,18 @@
 import 'dart:convert';
+import 'package:hive/hive.dart';
+part 'category.g.dart';
 
 List<Category> popularCategoryFromJson(String val) => List<Category>.from(json
     .decode(val)['data']
     .map((category) => Category.popularCategoryFromJson(category)));
 
+@HiveType(typeId: 2)
 class Category {
-  final String name, image;
-  // final String image;
+  @HiveField(0)
+  final String name;
+  @HiveField(1)
+  final String image;
+  @HiveField(2)
   final int id;
 
   Category({

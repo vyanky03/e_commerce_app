@@ -34,6 +34,7 @@ class _CaraouselSliderViewState extends State<CaraouselSliderView> {
           options: CarouselOptions(
             aspectRatio: 16 / 9,
             viewportFraction: 1,
+            autoPlay: true,
             onPageChanged: (index, reason) {
               setState(() {
                 _currentIndex = index;

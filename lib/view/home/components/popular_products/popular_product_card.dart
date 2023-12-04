@@ -1,8 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:e_commerce_app/constants.dart';
+// import 'package:cached_network_image/cached_network_image.dart';
+// import 'package:e_commerce_app/constants.dart';
+// import 'package:shimmer/shimmer.dart';
 import 'package:e_commerce_app/model/popular_product.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 
 class PopularProductCard extends StatelessWidget {
   const PopularProductCard({super.key, required this.product});
@@ -21,7 +21,7 @@ class PopularProductCard extends StatelessWidget {
           width: 120,
           child: Column(
             children: [
-              AspectRatio(
+              const AspectRatio(
                 aspectRatio: 0.9,
                 // child: CachedNetworkImage(
                 //   // imageUrl: baseUrl + product.images.first,

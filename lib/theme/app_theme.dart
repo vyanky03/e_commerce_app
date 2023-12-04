@@ -15,15 +15,14 @@ class AppTheme {
   static final lightTheme = ThemeData(
       brightness: Brightness.light,
       primaryColor: lightPrimaryColor,
-      backgroundColor: lightBackgroundColor,
       visualDensity: VisualDensity.adaptivePlatformDensity,
       appBarTheme: AppBarTheme(backgroundColor: lightPrimaryColor),
       colorScheme: ColorScheme.light(secondary: lightSecondaryColor),
       textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(primary: lightBackgroundColor)));
+          style: TextButton.styleFrom(foregroundColor: lightBackgroundColor)));
 
   static Brightness get currentSystemBrightness =>
-      SchedulerBinding.instance.window.platformBrightness;
+      SchedulerBinding.instance.platformDispatcher.platformBrightness;
 
   static setStatusBarAndNavigationBarColors(ThemeMode themeMode) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(

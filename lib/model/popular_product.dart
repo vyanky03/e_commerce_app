@@ -23,7 +23,7 @@ class Product {
             ['description'],
         name: data['attributes']['product']['data']['attributes']['name'],
         // images: List<String>.from(data['attributes']['product']['data']
-        //         ['attributes']['image']['data']
+        //         ['attributes']['images']['data']
         //     .map((image) => image['attributes']['url'])),
       );
 }

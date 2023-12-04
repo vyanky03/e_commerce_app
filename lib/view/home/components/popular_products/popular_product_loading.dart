@@ -7,7 +7,7 @@ class PopularProductLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 220,
+      height: 240,
       padding: const EdgeInsets.only(right: 10),
       child: ListView.builder(
           scrollDirection: Axis.horizontal,

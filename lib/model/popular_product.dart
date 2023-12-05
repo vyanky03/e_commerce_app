@@ -1,10 +1,13 @@
 import 'dart:convert';
+import 'package:e_commerce_app/model/tags.dart';
 import 'package:hive/hive.dart';
 part 'popular_product.g.dart';
 
-List<Product> popularProductfromJson(String val) => List<Product>.from(json
-    .decode(val)['data']
-    .map((product) => Product.popularProductfromJson(product)));
+List<Product> popularProductListfromJson(String val) => List<Product>.from(
+    json.decode(val)['data'].map((val) => Product.popularProductfromJson(val)));
+
+List<Product> productListfromJson(String val) => List<Product>.from(
+    json.decode(val)['data'].map((val) => Product.productfromJson(val)));
 
 @HiveType(typeId: 3)
 class Product {
@@ -14,13 +17,17 @@ class Product {
   final int id;
   @HiveField(2)
   final String description;
-  // final List<String> images;
+  @HiveField(3)
+  final List<Tags> tags;
+  @HiveField(4)
+  final List<String> images;
 
   Product({
     required this.id,
     required this.description,
-    // required this.images,
     required this.name,
+    required this.tags,
+    required this.images,
   });
 
   factory Product.popularProductfromJson(Map<String, dynamic> data) => Product(
@@ -28,8 +35,20 @@ class Product {
         description: data['attributes']['product']['data']['attributes']
             ['description'],
         name: data['attributes']['product']['data']['attributes']['name'],
-        // images: List<String>.from(data['attributes']['product']['data']
-        //         ['attributes']['images']['data']
-        //     .map((image) => image['attributes']['url'])),
+        tags: [],
+        images: List<String>.from(data['attributes']['product']['data']
+                ['attributes']['images']['data']
+            .map((image) => image['attributes']['url'])),
       );
+
+  factory Product.productfromJson(Map<List<String>, dynamic> data) => Product(
+      images: List<String>.from(data['attributes']['images']['data']
+          .map((image) => image['attributes']['url'])),
+      id: data['id'],
+      description: data['attributes']['description'],
+      name: data['attributes']['name'],
+      tags: List<Tags>.from(
+        data['attributes']['tags']['data']
+            .map((val) => Tags.fromjson(val).toString()),
+      ));
 }

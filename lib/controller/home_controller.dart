@@ -81,10 +81,10 @@ class HomeController extends GetxController {
       isPopuplarProductloading(true);
       var result = await RemotePopularProductService().get();
       if (result != null) {
-        popularProductList.assignAll(popularProductfromJson(result.body));
+        popularProductList.assignAll(popularProductListfromJson(result.body));
         //save api result to local db
         _poularProductService.assignAllPopularProduct(
-            product: popularProductfromJson(result.body));
+            product: popularProductListfromJson(result.body));
       }
     } finally {
       // print(popularProductList.length);

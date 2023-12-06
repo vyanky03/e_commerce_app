@@ -1,6 +1,6 @@
-// import 'package:cached_network_image/cached_network_image.dart';
-// import 'package:e_commerce_app/constants.dart';
-// import 'package:shimmer/shimmer.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_commerce_app/constants.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:e_commerce_app/model/popular_product.dart';
 import 'package:flutter/material.dart';
 
@@ -21,27 +21,27 @@ class PopularProductCard extends StatelessWidget {
           width: 120,
           child: Column(
             children: [
-              const AspectRatio(
+              AspectRatio(
                 aspectRatio: 0.9,
-                // child: CachedNetworkImage(
-                //   // imageUrl: baseUrl + product.images.first,
-                //   placeholder: (context, url) => Shimmer.fromColors(
-                //       baseColor: Colors.grey.shade300,
-                //       highlightColor: Colors.white,
-                //       child: Container(
-                //         color: Colors.grey,
-                //         padding: const EdgeInsets.all(15),
-                //         margin: const EdgeInsets.symmetric(
-                //           horizontal: 25,
-                //         ),
-                //       )),
-                //   errorWidget: (context, url, error) => const Center(
-                //     child: Icon(
-                //       Icons.error_outline,
-                //       color: Colors.grey,
-                //     ),
-                //   ),
-                // ),
+                child: CachedNetworkImage(
+                  imageUrl: baseUrl + product.images.first,
+                  placeholder: (context, url) => Shimmer.fromColors(
+                      baseColor: Colors.grey.shade300,
+                      highlightColor: Colors.white,
+                      child: Container(
+                        color: Colors.grey,
+                        padding: const EdgeInsets.all(15),
+                        margin: const EdgeInsets.symmetric(
+                          horizontal: 25,
+                        ),
+                      )),
+                  errorWidget: (context, url, error) => const Center(
+                    child: Icon(
+                      Icons.error_outline,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 10,

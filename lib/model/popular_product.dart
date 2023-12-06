@@ -41,14 +41,13 @@ class Product {
             .map((image) => image['attributes']['url'])),
       );
 
-  factory Product.productfromJson(Map<List<String>, dynamic> data) => Product(
+  factory Product.productfromJson(Map<String, dynamic> data) => Product(
+      id: data['id'],
+      name: data['attributes']['name'],
+      description: data['attributes']['description'],
       images: List<String>.from(data['attributes']['images']['data']
           .map((image) => image['attributes']['url'])),
-      id: data['id'],
-      description: data['attributes']['description'],
-      name: data['attributes']['name'],
       tags: List<Tags>.from(
-        data['attributes']['tags']['data']
-            .map((val) => Tags.fromjson(val).toString()),
+        data['attributes']['tags']['data'].map((val) => Tags.fromjson(val)),
       ));
 }

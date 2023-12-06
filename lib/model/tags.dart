@@ -9,7 +9,8 @@ class Tags {
   });
 
   factory Tags.fromjson(Map<String, dynamic> data) => Tags(
-      id: data['id'],
-      price: data['attributes']['price'].toDouble,
-      title: data['attributes']['title']);
+        id: data['id'],
+        title: data['attributes']['title'],
+        price: data['attributes']['price'].toDouble(),
+      );
 }

@@ -7,7 +7,7 @@ class RemoteProductService {
 
   Future<dynamic> get() async {
     var response = await client.get(
-      Uri.parse(remoteUrl),
+      Uri.parse('$remoteUrl?populate=images,tags'),
     );
     return response;
   }

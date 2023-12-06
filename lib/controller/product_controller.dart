@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 class ProductController extends GetxController {
   static ProductController instance = Get.find();
   RxList<Product> productList = List<Product>.empty(growable: true).obs;
-  RxBool isProductLoading = true.obs;
+  RxBool isProductLoading = false.obs;
 
   @override
   void onInit() {
@@ -22,7 +22,6 @@ class ProductController extends GetxController {
       }
     } finally {
       isProductLoading(false);
-      print(productList.length);
     }
   }
 }

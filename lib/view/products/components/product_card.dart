@@ -62,7 +62,7 @@ class ProductCard extends StatelessWidget {
                     height: 5,
                   ),
                   Text(
-                    'Rs${product.tags.first.price.toStringAsFixed(2)}',
+                    'Rs ${product.tags.first.price.toStringAsFixed(2)}',
                     style: const TextStyle(
                       fontSize: 12,
                       color: Colors.grey,

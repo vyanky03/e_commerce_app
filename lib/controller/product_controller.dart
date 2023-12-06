@@ -1,5 +1,5 @@
 import 'package:e_commerce_app/model/popular_product.dart';
-import 'package:e_commerce_app/service/remote_service/remote_product_service.dart';
+import 'package:e_commerce_app/service/remote_service/remote_product_grid_service.dart';
 import 'package:get/get.dart';
 
 class ProductController extends GetxController {

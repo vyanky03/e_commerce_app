@@ -19,9 +19,9 @@ class DashBoard extends StatelessWidget {
             children: [
               const HomeScreen(),
               const ProductScreen(),
-              Container(color: Colors.blue),
+              Container(color: Colors.blueGrey),
               Container(
-                color: Colors.orange,
+                color: Colors.cyanAccent,
               ),
             ],
           ),

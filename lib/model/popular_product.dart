@@ -42,12 +42,13 @@ class Product {
       );
 
   factory Product.productfromJson(Map<String, dynamic> data) => Product(
-      id: data['id'],
-      name: data['attributes']['name'],
-      description: data['attributes']['description'],
-      images: List<String>.from(data['attributes']['images']['data']
-          .map((image) => image['attributes']['url'])),
-      tags: List<Tags>.from(
-        data['attributes']['tags']['data'].map((val) => Tags.fromjson(val)),
-      ));
+        id: data['id'],
+        name: data['attributes']['name'],
+        description: data['attributes']['description'],
+        images: List<String>.from(data['attributes']['images']['data']
+            .map((image) => image['attributes']['url'])),
+        tags: List<Tags>.from(
+          data['attributes']['tags']['data'].map((val) => Tags.fromjson(val)),
+        ),
+      );
 }

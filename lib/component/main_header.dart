@@ -1,4 +1,6 @@
+import 'package:e_commerce_app/controller/controllers.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MainHeader extends StatelessWidget {
   const MainHeader({super.key});
@@ -32,23 +34,46 @@ class MainHeader extends StatelessWidget {
                   ),
                 ],
               ),
-              child: TextField(
-                autofocus: false,
-                onSubmitted: (val) {},
-                onChanged: (val) {},
-                decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 14,
-                      vertical: 16,
-                    ),
-                    fillColor: Colors.white,
-                    filled: true,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(24),
-                      borderSide: BorderSide.none,
-                    ),
-                    hintText: 'Search...',
-                    prefixIcon: const Icon(Icons.search)),
+              child: Obx(
+                () => TextField(
+                  autofocus: false,
+                  controller: productController.searchTextEditior,
+                  onSubmitted: (val) {
+                    productController.getProductByName(keyword: val);
+                    dashboardController.updateIndex(1);
+                  },
+                  onChanged: (val) {
+                    productController.searchVal.value = val;
+                    // productController.getProductByName(keyword: val);
+                    // dashboardController.updateIndex(1);
+                  },
+                  decoration: InputDecoration(
+                      suffixIcon: productController.searchVal.value.isNotEmpty
+                          ? IconButton(
+                              onPressed: () {
+                                FocusScope.of(context)
+                                    .requestFocus(FocusNode());
+                                productController.searchTextEditior.clear();
+                                productController.searchVal.value = '';
+                                productController.gertProducts();
+                              },
+                              icon: const Icon(Icons.clear),
+                              color: Colors.grey,
+                            )
+                          : null,
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 14,
+                        vertical: 16,
+                      ),
+                      fillColor: Colors.white,
+                      filled: true,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(24),
+                        borderSide: BorderSide.none,
+                      ),
+                      hintText: 'Search...',
+                      prefixIcon: const Icon(Icons.search)),
+                ),
               ),
             ),
           ),

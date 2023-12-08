@@ -6,6 +6,10 @@ List<Category> popularCategoryFromJson(String val) => List<Category>.from(json
     .decode(val)['data']
     .map((category) => Category.popularCategoryFromJson(category)));
 
+List<Category> categoryListFromJson(String val) => List<Category>.from(json
+    .decode(val)['data']
+    .map((category) => Category.categoryListFromJson(category)));
+
 @HiveType(typeId: 2)
 class Category {
   @HiveField(0)
@@ -27,5 +31,11 @@ class Category {
         id: data['id'],
         image: data['attributes']['category']['data']['attributes']['image']
             ['data']['attributes']['url'],
+      );
+
+  factory Category.categoryListFromJson(Map<String, dynamic> data) => Category(
+        name: data['attributes']['name'],
+        id: data['id'],
+        image: data['attributes']['image']['data']['attributes']['url'],
       );
 }

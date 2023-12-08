@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/controller/dashboard_controlle.dart';
+import 'package:e_commerce_app/view/category/category_screen.dart';
 import 'package:e_commerce_app/view/home/home_screen.dart';
 import 'package:e_commerce_app/view/products/product_screen.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class DashBoard extends StatelessWidget {
             children: [
               const HomeScreen(),
               const ProductScreen(),
-              Container(color: Colors.blueGrey),
+              const CategoryScreen(),
               Container(
                 color: Colors.amberAccent,
               ),
@@ -50,8 +51,9 @@ class DashBoard extends StatelessWidget {
             items: const [
               BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.category), label: 'Category'),
-              BottomNavigationBarItem(icon: Icon(Icons.menu), label: 'Menu'),
+                  icon: Icon(Icons.category), label: 'Products'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.menu), label: 'Category'),
               BottomNavigationBarItem(
                   icon: Icon(Icons.account_circle), label: 'Account'),
             ],

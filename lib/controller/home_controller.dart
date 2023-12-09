@@ -30,7 +30,7 @@ class HomeController extends GetxController {
     await _poularProductService.init();
     getAdBanner();
     getPopularCategories();
-    getPopularProducts();
+
     super.onInit();
   }
 

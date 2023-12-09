@@ -16,11 +16,11 @@ class ProductController extends GetxController {
   @override
   void onInit() async {
     await _localPopularProductService.init();
-    getProducts();
+    gertProducts();
     super.onInit();
   }
 
-  void getProducts() async {
+  void gertProducts() async {
     try {
       isProductLoading(true);
       if (_localPopularProductService.getPopularProduct().isNotEmpty) {

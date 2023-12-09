@@ -55,7 +55,7 @@ class MainHeader extends StatelessWidget {
                                     .requestFocus(FocusNode());
                                 productController.searchTextEditior.clear();
                                 productController.searchVal.value = '';
-                                productController.gertProducts();
+                                productController.getProducts();
                               },
                               icon: const Icon(Icons.clear),
                               color: Colors.grey,

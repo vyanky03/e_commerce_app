@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/constants.dart';
-import 'package:e_commerce_app/model/popular_product.dart';
+import 'package:e_commerce_app/model/product.dart';
 import 'package:e_commerce_app/view/product_details/product_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';

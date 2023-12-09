@@ -1,25 +1,19 @@
-import 'package:e_commerce_app/model/popular_product.dart';
 import 'package:hive/hive.dart';
 
-class LocalPopularProductService {
+import '../../model/product.dart';
+
+class LocalProductService {
   late Box<Product> _popularProductBox;
-  late Box<Product> _productBox;
 
   Future<void> init() async {
-    _popularProductBox = await Hive.openBox<Product>('product');
-    _productBox = await Hive.openBox<Product>('popularproduct');
+    _popularProductBox = await Hive.openBox<Product>('PopularProducts');
   }
 
-  Future<void> assignAllPopularProduct({required List<Product> product}) async {
+  Future<void> assignAllPopularProducts(
+      {required List<Product> popularProducts}) async {
     await _popularProductBox.clear();
-    await _popularProductBox.addAll(product);
+    await _popularProductBox.addAll(popularProducts);
   }
 
-  Future<void> assignAllProduct({required List<Product> poularproduct}) async {
-    await _productBox.clear();
-    await _productBox.addAll(poularproduct);
-  }
-
-  List<Product> getProduct() => _popularProductBox.values.toList();
-  List<Product> getPopularProduct() => _productBox.values.toList();
+  List<Product> getPopularProducts() => _popularProductBox.values.toList();
 }

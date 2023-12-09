@@ -19,14 +19,14 @@ class CategoryController extends GetxController {
   void getCategories() async {
     try {
       isCategoryLoading(true);
-      if (_localCategoryService.getPopularCategory().isNotEmpty) {
-        categoryList.assignAll(_localCategoryService.getPopularCategory());
+      if (_localCategoryService.getCategories().isNotEmpty) {
+        categoryList.assignAll(_localCategoryService.getCategories());
       }
       var result = await RemoteCategoryService().get();
       if (result != null) {
         categoryList.assignAll(categoryListFromJson(result.body));
-        _localCategoryService.assignAllPopularCategory(
-            popularCategory: categoryListFromJson(result.body));
+        _localCategoryService.assignAllCategories(
+            categories: categoryListFromJson(result.body));
       }
     } finally {
       isCategoryLoading(false);

@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CategoryCard extends StatefulWidget {
-  const CategoryCard({super.key, required this.category});
   final Category category;
+  const CategoryCard({Key? key, required this.category}) : super(key: key);
 
   @override
   State<CategoryCard> createState() => _CategoryCardState();
@@ -29,7 +29,7 @@ class _CategoryCardState extends State<CategoryCard> {
           imageUrl: baseUrl + widget.category.image,
           imageBuilder: (context, imageProvider) => Material(
             elevation: 8,
-            shadowColor: Colors.grey.shade800,
+            shadowColor: Colors.grey.shade300,
             borderRadius: BorderRadius.circular(12),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 300),
@@ -38,12 +38,10 @@ class _CategoryCardState extends State<CategoryCard> {
               decoration: BoxDecoration(
                   color: Colors.grey.shade300,
                   borderRadius: BorderRadius.circular(12),
-                  image: DecorationImage(
-                    image: imageProvider,
-                    fit: BoxFit.cover,
-                  )),
+                  image:
+                      DecorationImage(image: imageProvider, fit: BoxFit.cover)),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.all(8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -52,16 +50,15 @@ class _CategoryCardState extends State<CategoryCard> {
                       child: Text(
                         widget.category.name,
                         style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                     InkWell(
                       onTap: () {
                         dashboardController.updateIndex(1);
-                        productController.searchTextEditior.text =
+                        productController.searchTextEditController.text =
                             'cat: ${widget.category.name}';
                         productController.searchVal.value =
                             'cat: ${widget.category.name}';
@@ -70,21 +67,21 @@ class _CategoryCardState extends State<CategoryCard> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.6),
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(24),
-                          ),
-                        ),
+                            color: Colors.white.withOpacity(0.6),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(24))),
                         child: const Padding(
                           padding:
                               EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                           child: Text(
-                            'View More',
-                            style: TextStyle(color: Colors.black87),
+                            'View more',
+                            style: TextStyle(
+                                color: Colors.black54,
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),
@@ -95,41 +92,43 @@ class _CategoryCardState extends State<CategoryCard> {
             shadowColor: Colors.grey.shade300,
             borderRadius: BorderRadius.circular(12),
             child: Shimmer.fromColors(
-              baseColor: Colors.grey.shade300,
-              highlightColor: Colors.white,
-              child: Container(
-                width: double.infinity,
-                height: 140,
-                decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(12)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      height: 30,
-                      width: 100,
-                      color: Colors.grey,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.6),
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(24),
+                baseColor: Colors.grey.shade300,
+                highlightColor: Colors.white,
+                child: Container(
+                  width: double.infinity,
+                  height: 140,
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(12)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          height: 30,
+                          width: 100,
+                          color: Colors.grey,
                         ),
-                      ),
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                        child: Text(
-                          'View More',
-                          style: TextStyle(color: Colors.black54),
-                        ),
-                      ),
+                        Container(
+                          decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.6),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(24))),
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 8),
+                            child: Text(
+                              'View more',
+                              style: TextStyle(
+                                  color: Colors.black54,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        )
+                      ],
                     ),
-                  ],
-                ),
-              ),
-            ),
+                  ),
+                )),
           ),
           errorWidget: (context, url, error) => Material(
             elevation: 8,
@@ -138,9 +137,8 @@ class _CategoryCardState extends State<CategoryCard> {
               width: double.infinity,
               height: 140,
               decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(12),
-              ),
+                  color: Colors.grey.shade300,
+                  borderRadius: BorderRadius.circular(12)),
               child: const Center(
                 child: Icon(
                   Icons.error_outline,

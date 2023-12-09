@@ -1,6 +1,6 @@
 import 'package:e_commerce_app/view/product_details/components/product_caraousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:e_commerce_app/model/popular_product.dart';
+import 'package:e_commerce_app/model/product.dart';
 import 'package:intl/intl.dart';
 
 class ProductDetailScreen extends StatefulWidget {

@@ -1,12 +1,10 @@
 import 'dart:convert';
-
 import 'package:hive/hive.dart';
-
 part 'user.g.dart';
 
 User userFromJson(String str) => User.fromJson(json.decode(str));
 
-@HiveType(typeId: 5)
+@HiveType(typeId: 4)
 class User {
   @HiveField(0)
   String id;

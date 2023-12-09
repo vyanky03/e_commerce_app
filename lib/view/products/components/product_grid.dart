@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/model/popular_product.dart';
+import 'package:e_commerce_app/model/product.dart';
 import 'package:e_commerce_app/view/products/components/product_card.dart';
 import 'package:flutter/material.dart';
 

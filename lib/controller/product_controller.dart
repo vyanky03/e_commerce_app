@@ -1,39 +1,31 @@
-import 'package:e_commerce_app/model/popular_product.dart';
-import 'package:e_commerce_app/service/local_service/loca_popular_product_service.dart';
+import 'package:e_commerce_app/model/product.dart';
 import 'package:e_commerce_app/service/remote_service/remote_product_grid_service.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class ProductController extends GetxController {
   static ProductController instance = Get.find();
-  TextEditingController searchTextEditior = TextEditingController();
+  TextEditingController searchTextEditController = TextEditingController();
   RxString searchVal = ''.obs;
   RxList<Product> productList = List<Product>.empty(growable: true).obs;
   RxBool isProductLoading = false.obs;
-  final LocalPopularProductService _localPopularProductService =
-      LocalPopularProductService();
 
   @override
-  void onInit() async {
-    await _localPopularProductService.init();
-    gertProducts();
+  void onInit() {
+    getProducts();
     super.onInit();
   }
 
-  void gertProducts() async {
+  void getProducts() async {
     try {
       isProductLoading(true);
-      if (_localPopularProductService.getPopularProduct().isNotEmpty) {
-        productList.assignAll(_localPopularProductService.getPopularProduct());
-      }
       var result = await RemoteProductService().get();
       if (result != null) {
-        productList.assignAll(productListfromJson(result.body));
-        _localPopularProductService.assignAllProduct(
-            poularproduct: productListfromJson(result.body));
+        productList.assignAll(productListFromJson(result.body));
       }
     } finally {
       isProductLoading(false);
+      // print(productList.length);
     }
   }
 
@@ -42,10 +34,11 @@ class ProductController extends GetxController {
       isProductLoading(true);
       var result = await RemoteProductService().getByName(keyword: keyword);
       if (result != null) {
-        productList.assignAll(productListfromJson(result.body));
+        productList.assignAll(productListFromJson(result.body));
       }
     } finally {
       isProductLoading(false);
+      // print(productList.length);
     }
   }
 
@@ -54,10 +47,11 @@ class ProductController extends GetxController {
       isProductLoading(true);
       var result = await RemoteProductService().getByCategory(id: id);
       if (result != null) {
-        productList.assignAll(productListfromJson(result.body));
+        productList.assignAll(productListFromJson(result.body));
       }
     } finally {
       isProductLoading(false);
+      // print(productList.length);
     }
   }
 }

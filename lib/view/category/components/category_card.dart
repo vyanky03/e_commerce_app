@@ -42,48 +42,51 @@ class _CategoryCardState extends State<CategoryCard> {
                     image: imageProvider,
                     fit: BoxFit.cover,
                   )),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Align(
-                    alignment: const Alignment(-1, 0),
-                    child: Text(
-                      widget.category.name,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      dashboardController.updateIndex(1);
-                      productController.searchTextEditior.text =
-                          'cat: ${widget.category.name}';
-                      productController.searchVal.value =
-                          'cat: ${widget.category.name}';
-                      productController.getProductByCategory(
-                          id: widget.category.id);
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.6),
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(24),
-                        ),
-                      ),
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                        child: Text(
-                          'View More',
-                          style: TextStyle(color: Colors.black54),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Align(
+                      alignment: const Alignment(-1, 0),
+                      child: Text(
+                        widget.category.name,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
                         ),
                       ),
                     ),
-                  ),
-                ],
+                    InkWell(
+                      onTap: () {
+                        dashboardController.updateIndex(1);
+                        productController.searchTextEditior.text =
+                            'cat: ${widget.category.name}';
+                        productController.searchVal.value =
+                            'cat: ${widget.category.name}';
+                        productController.getProductByCategory(
+                            id: widget.category.id);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.6),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(24),
+                          ),
+                        ),
+                        child: const Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          child: Text(
+                            'View More',
+                            style: TextStyle(color: Colors.black87),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
